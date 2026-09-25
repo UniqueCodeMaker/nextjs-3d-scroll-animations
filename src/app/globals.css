@@ -1,4 +1,68 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-*{box-sizing:border-box}html{background:#0a0a09;scroll-behavior:auto}body{margin:0;background:#0a0a09;color:#f5f0e8;font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}.burger-site{position:relative;min-height:500vh;background:#0a0a09}.burger-webgl{position:fixed;inset:0;z-index:1;pointer-events:none}.burger-webgl canvas{width:100%!important;height:100%!important}.burger-header{position:fixed;z-index:8;left:0;right:0;top:0;padding:26px 32px;display:flex;justify-content:space-between;font-size:9px;letter-spacing:.24em;color:#f5f0e8}.burger-meta{position:fixed;z-index:8;right:28px;top:50%;display:flex;align-items:center;gap:10px;transform:rotate(-90deg) translateX(50%);transform-origin:right center;font-size:8px;letter-spacing:.2em}.burger-meta i{width:90px;height:1px;background:#f5f0e8;transform-origin:left}.burger-meta b{font-weight:400}.burger-hero,.burger-spacer,.burger-dark,.burger-end{position:relative;z-index:3;min-height:100vh;padding:15vh 9vw 12vh;display:flex;flex-direction:column;justify-content:flex-end}.burger-hero{justify-content:flex-start;padding-top:18vh}.burger-hero small,.burger-spacer small,.burger-dark small,.burger-end small{font-size:9px;letter-spacing:.28em}.burger-hero h1,.burger-spacer h2,.burger-dark h2,.burger-end h2{font-size:clamp(4.5rem,12vw,12rem);line-height:.78;letter-spacing:-.075em;margin:5vh 0 3vh;font-weight:800}.burger-hero h1 em{font-weight:300;font-style:normal}.burger-hero p,.burger-dark p{max-width:330px;font-size:11px;line-height:1.7;color:rgba(245,240,232,.62)}.burger-spacer{justify-content:center}.burger-spacer h2{margin:4vh 0 0}.burger-dark{background:linear-gradient(180deg,transparent,#050504 35%,#050504);justify-content:center}.burger-dark h2{margin:4vh 0}.burger-end{background:#050504;justify-content:flex-end}.burger-end button{align-self:flex-start;margin-top:30px;padding:14px 21px;border:1px solid rgba(245,240,232,.35);border-radius:999px;background:transparent;color:#f5f0e8;font-size:9px;letter-spacing:.18em;cursor:pointer}.burger-footer{position:relative;z-index:4;padding:30px 32px 40px;background:#050504;color:rgba(245,240,232,.4);font-size:8px;letter-spacing:.18em}@media(max-width:700px){.burger-header{padding:18px;font-size:7px}.burger-header span{display:none}.burger-meta{right:12px}.burger-hero,.burger-spacer,.burger-dark,.burger-end{padding-left:7vw;padding-right:7vw}.burger-hero h1,.burger-spacer h2,.burger-dark h2,.burger-end h2{font-size:clamp(3.7rem,17vw,7rem)}}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+}
+
+/* House Architectural Walkthrough Styling */
+.house-site { position: relative; min-height: 760vh; background: #080808; color: #fff; }
+.house-3d { position: fixed; inset: 0; z-index: 1; pointer-events: none; }
+.house-3d canvas { width: 100% !important; height: 100% !important; }
+.house-3d__media { position: absolute; inset: 0; z-index: 1; overflow: hidden; }
+.house-3d__video, .house-3d__poster { width: 100%; height: 100%; object-fit: cover; }
+.house-3d__poster { position: absolute; inset: 0; opacity: .45; }
+.house-3d__vignette { position: absolute; inset: 0; z-index: 3; pointer-events: none; background: radial-gradient(circle at 50% 50%, transparent 40%, rgba(5,5,5,.8) 100%); }
+.house-preloader { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; align-content: center; gap: 18px; padding: 24px; background: #050505; transition: opacity .8s ease, visibility .8s ease; }
+.house-preloader--done { opacity: 0; visibility: hidden; pointer-events: none; }
+.house-preloader__brand, .house-preloader__meta { width: min(520px, 86vw); font-size: 9px; letter-spacing: .24em; opacity: .48; color: #fff; }
+.house-preloader__title { width: min(520px, 86vw); font-size: clamp(1.5rem, 4vw, 3rem); letter-spacing: -.03em; color: #fff; }
+.house-preloader__bar { width: min(520px, 86vw); height: 1px; background: rgba(255,255,255,.16); overflow: hidden; }
+.house-preloader__bar span { display: block; width: 100%; height: 100%; background: #fff; transform-origin: left center; }
+.house-header { position: fixed; top: 0; right: 0; left: 0; z-index: 15; display: flex; justify-content: space-between; padding: 24px 30px; pointer-events: none; font-size: 9px; letter-spacing: .22em; opacity: .72; color: #fff; }
+.house-nav { position: fixed; top: 50%; right: 28px; z-index: 12; display: grid; gap: 10px; transform: translateY(-50%); }
+.house-nav button { display: grid; grid-template-columns: 18px 1px auto; align-items: center; gap: 8px; padding: 4px 0; border: 0; background: transparent; color: rgba(255,255,255,.45); cursor: pointer; text-align: right; }
+.house-nav button span, .house-nav button strong { font-size: 8px; letter-spacing: .16em; font-weight: 400; white-space: nowrap; }
+.house-nav button i { width: 1px; height: 12px; background: rgba(255,255,255,.18); }
+.house-nav button strong { opacity: 0; transform: translateX(6px); transition: opacity .25s ease, transform .25s ease; }
+.house-nav button.is-active, .house-nav button:hover, .house-nav button:focus-visible { color: #fff; }
+.house-nav button.is-active strong, .house-nav button:hover strong, .house-nav button:focus-visible strong { opacity: 1; transform: translateX(0); }
+.house-intro { position: relative; z-index: 2; min-height: 96vh; display: flex; align-items: center; padding: 18vh 9vw 8vh; pointer-events: none; color: #fff; }
+.house-intro__copy { max-width: 840px; text-shadow: 0 12px 42px rgba(0,0,0,.45); }
+.house-intro__copy p, .house-intro__copy span { margin: 0; font-size: 9px; letter-spacing: .26em; opacity: .56; }
+.house-intro__copy h1 { margin: 24px 0 32px; font-size: clamp(4.6rem, 13vw, 12rem); line-height: .82; letter-spacing: -.06em; font-weight: 400; }
+.house-story { position: relative; z-index: 2; }
+.house-chapter { position: relative; display: flex; align-items: center; padding: 0 9vw; scroll-margin-top: 20px; color: #fff; }
+.house-chapter__overlay { width: min(660px, 72vw); opacity: 0; will-change: opacity, transform; text-shadow: 0 10px 34px rgba(0,0,0,.55); }
+.house-chapter__overlay p, .house-mobile-shot__copy p, .house-mobile-shot__copy span, .house-chapter__overlay span { display: block; font-size: 10px; line-height: 1.55; letter-spacing: .04em; color: rgba(255,255,255,.68); }
+.house-chapter__overlay p, .house-mobile-shot__copy p { margin: 0 0 14px; font-size: 9px; letter-spacing: .24em; }
+.house-chapter__overlay h2, .house-mobile-shot__copy h2 { margin: 0 0 20px; max-width: 760px; font-size: clamp(2.7rem, 6.2vw, 6.4rem); line-height: .92; font-weight: 400; letter-spacing: -.055em; }
+.house-scroll-meter { position: absolute; left: 9vw; bottom: 10vh; font-size: 8px; letter-spacing: .24em; opacity: .42; color: #fff; }
+.house-chapter--cta { align-items: flex-end; padding-bottom: 12vh; }
+.house-footer { position: relative; z-index: 3; display: flex; justify-content: space-between; gap: 40px; padding: 12vh 9vw 10vh; background: #050505; border-top: 1px solid rgba(255,255,255,.08); color: #fff; }
+.house-footer p { margin: 0 0 12px; font-size: 9px; letter-spacing: .22em; opacity: .42; }
+.house-footer strong { display: block; margin-bottom: 12px; font-size: clamp(2rem, 5vw, 5rem); line-height: .95; font-weight: 400; letter-spacing: -.05em; }
+.house-footer span { color: rgba(255,255,255,.58); font-size: 13px; }
+.house-footer__actions { display: flex; align-items: flex-end; gap: 10px; }
+.house-footer__actions a { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 18px; border: 1px solid rgba(255,255,255,.18); border-radius: 999px; color: #fff; text-decoration: none; font-size: 9px; letter-spacing: .18em; transition: background .25s ease, color .25s ease, border-color .25s ease; }
+.house-footer__actions a:hover, .house-footer__actions a:focus-visible { background: #fff; color: #050505; border-color: #fff; }
+.house-mobile-shot { width: 100%; padding: 10vh 0 8vh; }
+.house-mobile-shot__media { overflow: hidden; aspect-ratio: 16/10; background: #0b0b0b; border-radius: 2px; }
+.house-mobile-shot__media video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.house-mobile-shot__copy { padding: 26px 0 0; }

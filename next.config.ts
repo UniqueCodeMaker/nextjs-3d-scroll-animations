@@ -12,6 +12,12 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+  allowedDevOrigins: [
+    "localhost:3000",
+    "*.ngrok-free.dev",
+    "*.ngrok.app",
+    "glennis-pseudosyphilitic-maude.ngrok-free.dev",
+  ],
 };
 
 export default nextConfig;
