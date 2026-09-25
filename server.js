@@ -8,7 +8,11 @@ import { fileURLToPath } from 'url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-const dev = process.env.NODE_ENV !== 'production'
+// Default to production unless explicitly set to development
+const dev = process.env.NODE_ENV === 'development'
+if (!process.env.NODE_ENV) {
+  process.env.NODE_ENV = 'production'
+}
 const hostname = '0.0.0.0'
 const port = parseInt(process.env.PORT || '5001', 10)
 const app = next({ dev, hostname, port, dir: __dirname })

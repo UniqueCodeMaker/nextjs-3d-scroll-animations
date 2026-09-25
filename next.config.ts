@@ -14,6 +14,11 @@ const nextConfig: NextConfig = {
   },
   allowedDevOrigins: [
     "localhost:3000",
+    "localhost:5001",
+    "localhost:9010",
+    "projects.mind-roots.com",
+    "*.mind-roots.com",
+    "64.227.169.71",
     "*.ngrok-free.dev",
     "*.ngrok.app",
     "glennis-pseudosyphilitic-maude.ngrok-free.dev",
