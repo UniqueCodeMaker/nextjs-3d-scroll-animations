@@ -2,11 +2,13 @@
   "name": "nextjs-3d-scroll-animations",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "packageManager": "pnpm@10.28.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "node server.js",
+    "start:next": "next start",
     "lint": "next lint"
   },
   "dependencies": {

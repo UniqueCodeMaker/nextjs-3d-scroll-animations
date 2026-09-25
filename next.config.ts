@@ -4,7 +4,7 @@ const isGitHubPages = process.env.GITHUB_ACTIONS === "true";
 const basePath = isGitHubPages ? "/nextjs-3d-scroll-animations" : "";
 
 const nextConfig: NextConfig = {
-  output: "export",
+  // output: "export", // Disabled for Node.js / HTTPS custom server
   basePath,
   env: {
     NEXT_PUBLIC_BASE_PATH: basePath,

@@ -68,7 +68,93 @@ export function MacBookExperience() {
         <span className="text-gray-500">Apple Silicon M4</span>
       </header>
 
+      {/* Interactive Character Control Dock */}
+      <div className="fixed top-16 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2 max-w-[95vw]">
+        <div className="flex items-center gap-2 p-2 rounded-2xl bg-white/85 backdrop-blur-xl border border-gray-200/80 shadow-2xl">
+          {/* Direct File Upload Button */}
+          <button
+            type="button"
+            onClick={handleTriggerUpload}
+            className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold shadow-md transition-all active:scale-95 cursor-pointer"
+          >
+            <Upload className="w-4 h-4" />
+            <span>Upload Image</span>
+          </button>
 
+          <div className="h-6 w-px bg-gray-200" />
+
+          {/* Preset Characters */}
+          <div className="flex items-center gap-1">
+            {CHARACTER_PRESETS.map((preset) => {
+              const isSelected = selectedPreset === preset.id;
+              return (
+                <button
+                  key={preset.id}
+                  type="button"
+                  onClick={() => handleSelectPreset(preset)}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
+                    isSelected
+                      ? "bg-gray-900 text-white shadow-sm"
+                      : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+                  }`}
+                >
+                  <Sparkles className="w-3 h-3 text-amber-500" />
+                  <span>{preset.name}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="h-6 w-px bg-gray-200" />
+
+          {/* Display Mode Toggle */}
+          <div className="flex items-center gap-1 bg-gray-100 p-1 rounded-xl">
+            <button
+              type="button"
+              onClick={() => setDisplayMode("screen")}
+              className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-[11px] font-medium transition-all cursor-pointer ${
+                displayMode === "screen"
+                  ? "bg-white text-blue-600 shadow-sm font-semibold"
+                  : "text-gray-500 hover:text-gray-800"
+              }`}
+            >
+              <Monitor className="w-3.5 h-3.5" />
+              <span>Screen</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setDisplayMode("hologram")}
+              className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-[11px] font-medium transition-all cursor-pointer ${
+                displayMode === "hologram"
+                  ? "bg-white text-blue-600 shadow-sm font-semibold"
+                  : "text-gray-500 hover:text-gray-800"
+              }`}
+            >
+              <Layers className="w-3.5 h-3.5" />
+              <span>3D Hologram</span>
+            </button>
+          </div>
+
+          {/* Active Character Thumbnail Badge */}
+          <div className="h-6 w-px bg-gray-200" />
+          <div className="flex items-center gap-2 pl-1 pr-2 py-0.5 rounded-lg bg-gray-50 border border-gray-200/60 text-xs">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={characterUrl}
+              alt="Active Character"
+              className="w-6 h-6 object-contain rounded bg-gray-900/10 p-0.5 border border-gray-200"
+            />
+            <span className="font-semibold text-gray-800 max-w-[110px] truncate text-[11px]">
+              {customFileName ? customFileName : selectedPreset.toUpperCase()}
+            </span>
+          </div>
+        </div>
+
+        {/* Small Interaction Hint */}
+        <div className="text-[10px] tracking-wider text-gray-500 font-mono bg-white/70 backdrop-blur-md px-3 py-0.5 rounded-full border border-gray-100 shadow-sm">
+          💡 Click directly on the MacBook display to upload your character
+        </div>
+      </div>
 
       {/* Hero Section */}
       <section
